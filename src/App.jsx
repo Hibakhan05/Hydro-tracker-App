@@ -255,11 +255,11 @@ export default function WaterIntakeTracker() {
       >
         <motion.div
           className="absolute top-6 right-6 z-50"
-          initial={false} 
+          initial={false}
           transition={{ duration: 0 }}>
           <button
             onClick={(e) => {
-              e.stopPropagation(); 
+              e.stopPropagation();
               setTheme(theme === 'dark' ? 'light' : 'dark');
             }}
             className={`p-3 rounded-2xl border shadow-lg transition-all
@@ -269,7 +269,19 @@ export default function WaterIntakeTracker() {
           </button>
         </motion.div>
         <div className="text-center mb-4">
-          <div className="text-5xl mb-4 theme === 'dark' ? 'text-cyan-400' : 'text-blue-900'">💧</div>
+          <div className="text-5xl mb-4 theme === 'dark' ? 'text-cyan-400' : 'text-blue-900'">
+            <i
+              className="fa-solid fa-droplet text-5xl mb-4 inline-block"
+              style={{
+                background: theme === 'dark'
+                  ? 'linear-gradient(to top, #99D4ED 40%, #3686AE 40%)'
+                  : 'linear-gradient(to top, rgb(61, 146, 211) 40%, rgb(147, 197, 253) 40%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            />
+
+          </div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-800 to-blue-900 bg-clip-text text-transparent">
             HydroTrack
           </h1>
@@ -503,9 +515,9 @@ export default function WaterIntakeTracker() {
           </h3>
 
           <div className={"grid grid-cols-1 sm:grid-cols-3 gap-3"}>{[
-            { amount: 100, label: 'Small', icon: '💧' },
-            { amount: 250, label: 'Cup', icon: '☕' },
-            { amount: 500, label: 'Bottle', icon: '🍶' }
+            { amount: 100, label: 'Small', icon: <i className="fa-solid fa-droplet" style={{ color: 'rgb(102, 144, 218)' }}></i> },
+            { amount: 250, label: 'Cup', icon: <i className="fa-solid fa-mug-saucer" style={{ color: 'rgb(102, 144, 218)' }}></i> },
+            { amount: 500, label: 'Bottle', icon: <i className="fa-solid fa-bottle-water" style={{ color: 'rgb(102, 144, 218)' }}></i> }
           ].map(({ amount, label, icon }) => (
             <motion.button
               key={amount} whileTap={{ scale: 0.95 }} onClick={() => addWater(amount)}
